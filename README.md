@@ -1,57 +1,42 @@
-# GCS (GNOME C-Sharp)
+# GCPP (GNOME C Plus Plus)
 **Alpha - Active development. Not yet suitable for production use.**
 
-GCS is a native C# runtime for GNOME Shell, replacing GJS and its JavaScript engine with a NativeAOT-based execution model. It embeds directly into GNOME Shell and exposes C# bindings generated from GIR files.
+GCPP is a native C++ runtime for GNOME Shell, replacing GJS and its JavaScript engine. It embeds directly into GNOME Shell and exposes C++ bindings generated from GIR files.
 
-GCS is not a drop-in replacement for GJS. Extensions must be rewritten in C# and compiled to native `.so` shared libraries. In exchange, the entire desktop stack runs without a JavaScript runtime and .NET runtime dependency.
+GCPP is not a drop-in replacement for GJS. Extensions must be rewritten in C++ and compiled to native `.so` shared libraries. In exchange, the entire desktop stack runs without a JavaScript runtime.
 
-## Who is GCS for?
+## Who is GCPP for?
 
-**Extension developers** who want to write GNOME Shell extensions in C# instead of JavaScript, and are comfortable with a native compilation toolchain.
+**Extension developers** who want to write GNOME Shell extensions in C++ instead of JavaScript, and are comfortable with a native compilation toolchain.
 
 **Distribution maintainers** who want a more predictable, fully native desktop stack without a runtime scripting dependency.
 
-**End users** who want a GNOME desktop running on a native execution model. GCS is not yet installable, this will change as the project matures.
+**End users** who want a GNOME desktop running on a native execution model. GCPP is not yet installable, this will change as the project matures.
 
 ## How it works
 
-GCS generates C# bindings from GIR introspection files, then compiles the GNOME Shell runtime to a native binary using .NET NativeAOT. There is no .NET runtime at execution time.
+GCPP generates C++ bindings from GIR introspection files, then compiles the GNOME Shell runtime to a native binary.
 
-Extensions are written in C# and compiled separately to native `.so` shared libraries, which GCS loads at runtime via `dlopen`. This preserves GNOME's dynamic extension loading model while keeping the runtime fully native.
+Extensions are written in C++ and compiled separately to native `.so` shared libraries, which GCPP loads at runtime. This preserves GNOME's dynamic extension loading model while keeping the runtime fully native.
 
 ## Requirements
 
-> [!CAUTION]
-> **Build Requirements & Dependency Map**
->
-> You need GNOME 48, Debian 13 Trixie (stable) or a Debian-based derivative.
-> GCS requires low-level access to the GNOME stack. Missing headers will cause Source Generator failure.
-> Ensure you have the following tree (or equivalents) installed:
->
-> **Quick Install (Debian/Ubuntu)**
-> ```bash
-> sudo apt install build-essential clang zlib1g-dev libicu-dev pkg-config \
-> libglib2.0-dev libgirepository-1.0-dev libcairo2-dev libpango1.0-dev \
-> libgraphene-1.0-dev libgdk-pixbuf-2.0-dev libgtk-4-dev libadwaita-1-dev \
-> libmutter-16-dev libclutter-1.0-dev libcogl-dev libatk1.0-dev \ libdbus-1-dev libxml2-utils
->```
-
 ## Writing extensions
 
-Extensions are written in C# and compiled to native `.so` libraries using the .NET SDK with NativeAOT support. GCS loads them at runtime via `dlopen`.
+Extensions are written in C++ and compiled to native `.so` libraries. GCPP loads them at runtime.
 
 **Requirements for extension developers:**
 
-- .NET SDK with NativeAOT toolchain
+- C++ with Meson toolchain
 
-- Familiarity with C# and native interop
+- Familiarity with C++ and native interop
 
-- Adherence to the Gcs.Generator and Gcs.Bindings
+- Adherence to the Gcpp.Generator and Gcpp.Bindings
 
 > **Note:** There is currently no official SDK, project templates, or scaffolding tooling for extensions. This is planned for future releases.
 
 ## Status
-GCS is in **alpha**. Core infrastructure is being written. Nothing is installable or runnable yet.
+GCPP is in **alpha**. Core infrastructure is being written. Nothing is installable or runnable yet.
 
 **Project Roadmap**
 - [x] **Architecture defined**
@@ -76,4 +61,4 @@ GCS is in **alpha**. Core infrastructure is being written. Nothing is installabl
 
 ## License
 
-[0BSD](https://github.com/GNOME-DOT-NET/gcs/blob/main/license.txt)
+[0BSD](https://github.com/AdamPlejznerowski/gcpp/blob/main/license.txt)
