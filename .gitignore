@@ -1,10 +1,4 @@
-**/bin/
-**/obj/
-**/*.so
-**/*.dll
-**/*.pdb
-**/*.cache
-**/*.o
-**/*.exports
-**/*.json
-**/*.rsp
+buildir-gcc/
+.vscode/
+subprojects/*/
+!subprojects/*.wrap

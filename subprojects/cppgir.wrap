@@ -1,0 +1,4 @@
+[wrap-git]
+url = https://gitlab.com/mnauw/cppgir
+revision = head
+depth = 1
