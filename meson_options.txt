@@ -1,0 +1,6 @@
+option(
+    'GCPP_ENABLE_DEPS_GNOME_SYSROOT',
+    type: 'feature',
+    value: 'enabled',
+    description: 'Default enabled, change if you use system dependencies.'
+)

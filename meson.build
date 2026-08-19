@@ -14,5 +14,15 @@ add_project_arguments(
     '-Wno-pedantic',
     language: 'cpp'
 )
+
+if get_option('GCPP_ENABLE_DEPS_GNOME_SYSROOT').enabled()
+
+run_command(
+    find_program('bash'),
+    meson.project_source_root() / 'setup_sysroot.sh',
+    check: true
+)
+endif
+
 subproject('cppgir')
 subdir('src')
